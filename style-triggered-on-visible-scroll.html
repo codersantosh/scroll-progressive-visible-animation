@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Scroll Trigger Style - Apply CSS on Visible Scroll</title>
+    <meta name="description" content="A small JavaScript library that applies CSS to elements when they become visible on the viewport during scrolling. Uses Pure or Vanilla JavaScript with IntersectionObserver. Call the function AtScrollTriggerStyle('selector') to use in your project." />
+    <link rel="stylesheet" href="https://codersantosh.github.io/at-grid/css/at-grid.css" />
+    <style>
+        *, ::after, ::before {
+            box-sizing: border-box;
+        }
+        :root{
+            --at-container-sm: 540px;
+            --at-container-md: 720px;
+            --at-container-lg: 960px;
+            --at-container-xl: 1140px;
+            --at-container-xxl: 1400px;
+            --at-gutter:15px;
+        }
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+        }
+        @media (min-width: 1200px){
+            .at-container {
+                max-width: 1380px;
+            }
+        }
+        .demo-col{
+            padding: .75rem;
+            background-color: #33b5e5;
+            /* background-color: rgba(86,61,124,.15); */
+            border: 1px solid rgba(86,61,124,.2);
+            color: #fff;
+            font-size: 14px;
+        }
+        code {
+            font-size: .875em;
+            color: #d63384;
+            word-wrap: break-word;
+        }
+        hr{
+            margin: 40px 0;
+        }
+        img{
+            max-width: 100%;
+            height: auto;
+        }
+        .at-style-triggered-scroll{
+            transition: all 1s ease-in-out;
+        }
+        .demo-1{
+            width: 400px;
+            height: 600px;
+        }
+        .demo-2{
+            background-color: yellow;
+            width: 400px;
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="at-container-fluid" style="background: #ececec;padding-top: 40px">
+        <div class="at-flex at-justify-content-center">
+            <h1>JavaScript Scroll Trigger Style - Apply CSS on Visible Scroll</h1>
+        </div>
+        <div class="at-flex at-justify-content-center">
+            <h2>A small JavaScript library that applies CSS to elements when they become visible on the viewport during scrolling. Uses Pure or Vanilla JavaScript with IntersectionObserver. Call the function AtScrollTriggerStyle('selector') to use in your project.</h2>
+        </div>
+        <div class="at-flex at-justify-content-center">
+            <p>Created for me but feel free to use</p>
+        </div>
+        <hr />
+    </div>
+
+    <div class="at-container">
+        <div class="at-container">
+            <div class="at-flex at-justify-content-center">
+                <h4>Translate 2D: </h4>
+            </div>
+            <div class="at-flex at-justify-content-center">
+                <code>Original style: no transform</code>
+            </div>
+            <div class="at-flex at-justify-content-center">
+                <code>data-at-new-style='{"transform":"translate(200px,10px);"}'</code>
+            </div>
+            <div class="at-flex at-justify-content-center ">
+                <div class="at-style-triggered-scroll demo-col demo-1 at-flex at-justify-content-center at-align-items-center" data-at-new-style='{"transform":"translate(200px,10px)"}'>
+                    <p>400*600</p>
+                </div>
+            </div>
+        </div>
+        <div class="at-container">
+            <div class="at-flex at-justify-content-center">
+                <h4>Scale 2D: </h4>
+            </div>
+            <div class="at-flex at-justify-content-center">
+                <code>Original style: transform: scale(0.5, 0.5)</code>
+            </div>
+            <div class="at-flex at-justify-content-center">
+                <code>data-at-new-style='{"transform":"scale(1, 1)"}'</code>
+            </div>
+            <div class="at-flex at-justify-content-center">
+                <img class="at-style-triggered-scroll" src="https://picsum.photos/id/12/600/600" style="transform: scale(0.5, 0.5)" data-at-new-style='{"transform":"scale(1, 1)"}'  alt="Rotate demo 1"/>
+            </div>
+        </div>
+        <div class="at-container">
+            <div class="at-flex at-justify-content-center">
+                <h4>Support all styles: </h4>
+            </div>
+            <div class="at-flex at-justify-content-center">
+                <code>Original style:
+                    background-color: yellow;
+                    width: 300px;
+                    height: 300px;
+                </code>
+            </div>
+            <div class="at-flex at-justify-content-center">
+                <code>data-at-new-style='{"background-color":"green","width":"500px","height":"200px"}'</code>
+            </div>
+            <div class="at-flex at-justify-content-center ">
+                <div class="at-style-triggered-scroll demo-col demo-2 at-flex at-justify-content-center at-align-items-center" data-at-new-style='{"background-color":"green","width":"500px","height":"200px"}'>
+                    <p>Original: 300*300 New: 500*200</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/at-progressive-visible-scroll-style.js"></script>
+    <script id="rendered-js">
+        // Example usages of AtScrollTriggerStyle:
+        AtScrollTriggerStyle('.at-style-triggered-scroll');
+    </script>
+</body>
+</html> 

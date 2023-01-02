@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Scroll Trigger Style - Apply CSS Progressively on Scroll</title>
+    <meta name="description" content="A small JavaScript library that applies Transform CSS to elements while scrolling progressively. Uses Pure or Vanilla JavaScript with window event listener scroll. Call the function AtScrollProgressiveStyle('selector') to use in your project." />
+    <link rel="stylesheet" href="https://codersantosh.github.io/at-grid/css/at-grid.css" />
+    <style>
+        *, ::after, ::before {
+            box-sizing: border-box;
+        }
+        :root{
+            --at-container-sm: 540px;
+            --at-container-md: 720px;
+            --at-container-lg: 960px;
+            --at-container-xl: 1140px;
+            --at-container-xxl: 1400px;
+            --at-gutter:15px;
+        }
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+        }
+        @media (min-width: 1200px){
+            .at-container {
+                max-width: 1380px;
+            }
+        }
+        .demo-col{
+            padding: .75rem;
+            background-color: #33b5e5;
+            /* background-color: rgba(86,61,124,.15); */
+            border: 1px solid rgba(86,61,124,.2);
+            color: #fff;
+            font-size: 14px;
+        }
+        code {
+            font-size: .875em;
+            color: #d63384;
+            word-wrap: break-word;
+        }
+        hr{
+            margin: 40px 0;
+        }
+        img{
+            max-width: 100%;
+            height: auto;
+        }
+        .demo-1{
+            width: 400px;
+            height: 600px;
+            transform: translate(-100px,0px);
+        }
+        .demo-2{
+            transform: scale(0.5, 0.5);
+        }
+        .demo-3{
+            transform: rotate(0deg);
+        }
+    </style>
+</head>
+
+<body>
+<div class="at-container-fluid" style="background: #ececec;padding-top: 40px">
+    <div class="at-flex at-justify-content-center">
+        <h1>JavaScript Scroll Trigger Style - Apply CSS While Scrolling Progressively</h1>
+    </div>
+    <div class="at-flex at-justify-content-center">
+        <h2>A small JavaScript library that applies Transform CSS to elements while scrolling progressively. Uses Pure or Vanilla JavaScript with window event listener scroll. Call the function AtScrollProgressiveStyle('selector') to use in your project.</h2>
+    </div>
+    <div class="at-flex at-justify-content-center">
+        <p>Created for me but feel free to use</p>
+    </div>
+    <hr />
+</div>
+
+
+<div class="at-container">
+    <div class="at-flex at-justify-content-center">
+        <h4>Translate 2D: </h4>
+    </div>
+    <div class="at-flex at-justify-content-center">
+        <code>data-at-original-style='{"transform":"translate(-100px,0px)"}'</code>
+    </div>
+    <div class="at-flex at-justify-content-center">
+        <code>data-at-new-style='{"transform":"translate(200px,10px);"}'</code>
+    </div>
+    <div class="at-flex at-justify-content-center" style="overflow: hidden">
+        <div class="at-style-progressive-scroll demo-col demo-1 at-flex at-justify-content-center at-align-items-center"
+             data-at-original-style='{"transform":"translate(-100px,0px)"}' data-at-new-style='{"transform":"translate(200px,10px)"}'
+        >
+            <p>400*600</p>
+        </div>
+    </div>
+</div>
+<div class="at-container">
+    <div class="at-flex at-justify-content-center">
+        <h4>Scale 2D: </h4>
+    </div>
+    <div class="at-flex at-justify-content-center">
+        <code>data-at-original-style='{"transform":"scale(0.5, 0.5)"}'</code>
+    </div>
+    <div class="at-flex at-justify-content-center">
+        <code>data-at-new-style='{"transform":"scale(2, 2)"}'</code>
+    </div>
+    <div class="at-flex at-justify-content-center" style="overflow: hidden">
+        <img class="at-style-progressive-scroll demo-2"
+             src="https://picsum.photos/id/12/200/200"
+             data-at-original-style='{"transform":"scale(0.5, 0.5)"}'
+             data-at-new-style='{"transform":"scale(2, 2)"}'
+             alt="Rotate demo 1"
+             height="200"
+             width="200"
+        />
+    </div>
+</div>
+<div class="at-container">
+    <div class="at-flex at-justify-content-center">
+        <h4>Rotate 2D: </h4>
+    </div>
+    <div class="at-flex at-justify-content-center">
+        <code>data-at-original-style='{"transform":"rotate(0deg)"}'</code>
+    </div>
+    <div class="at-flex at-justify-content-center">
+        <code>data-at-new-style='{"transform":"rotate(45deg)"}'</code>
+    </div>
+    <div class="at-flex at-justify-content-center" style="overflow: hidden">
+        <img
+                class="at-style-progressive-scroll"
+                src="https://picsum.photos/id/12/200/200"
+                data-at-original-style='{"transform":"rotate(0deg)"}'
+                data-at-new-style='{"transform":"rotate(45deg)"}'
+                alt="progressive scroll demo rotate"
+                height="200"
+                width="200"
+        />
+    </div>
+</div>
+
+<div style="height: 500px"></div>
+
+
+
+<script src="js/at-progressive-visible-scroll-style.js"></script>
+<script id="rendered-js">
+    // Example usages of AtScrollProgressiveStyle:
+    AtScrollProgressiveStyle('.at-style-progressive-scroll');
+</script>
+
+</body>
+</html> 
