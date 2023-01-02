@@ -1,40 +1,40 @@
 /*Scroll Trigger Transform*/
 function AtScrollTriggerStyle(selector, options = {}) {
-    let els = document.querySelectorAll(selector);
-    els = Array.from(els);
-    els.forEach(el => {
-        AtAddScrollTriggerIntersectionObserver(el, options);
-    });
-}
-
-function AtAddScrollTriggerIntersectionObserver(el, options) {
     if (!('IntersectionObserver' in window)) {
         return;
     }
-    let observer = new IntersectionObserver((entries, observer) => {//this takes a callback function which receives two arguments: the elemts list and the observer instance
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
 
-                if (options.callBack) {
-                    options.callBack(el);
-                } else {
-                    // Convert the attribute value to an object
-                    const transform = entry.target.getAttribute('data-at-new-style');
-
-                    const transformStyles = JSON.parse(transform);
-
-                    Object.assign(entry.target.style, transformStyles);
-
+    const els = Array.from(document.querySelectorAll(selector));
+    els.forEach(el => {
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (options.callBack) {
+                        options.callBack(el);
+                    } else {
+                        if (el.hasAttribute('data-at-new-style')) {
+                            const transform = entry.target.getAttribute('data-at-new-style');
+                            try {
+                                const transformStyles = JSON.parse(transform, (key, value) => {
+                                    if (typeof value !== 'string') {
+                                        return value;
+                                    }
+                                    return isNaN(value) ? value : parseFloat(value);
+                                });
+                                Object.assign(entry.target.style, transformStyles);
+                            } catch (e) {
+                                console.error('Invalid JSON in data-at-new-style attribute:', e);
+                            }
+                        }
+                    }
+                    observer.unobserve(entry.target);
                 }
-                observer.unobserve(entry.target);
-            }
-            else{
-                /*do nothing for now*/
-            }
-        });
-    }, options);
-    observer.observe(el);
+            });
+        }, options);
+        observer.observe(el);
+    });
 }
+
 
 /*Scroll Down and Up Progressive Transform*/
 function AtGetUnitFromString(value){
@@ -259,6 +259,7 @@ function AtElementPositionPercentage(rect, el, elIndex){
 
         }
 
+        console.log(finalTransformData )
         if( finalTransformData.translateType && (finalTransformData.translateX || finalTransformData.translateY ||finalTransformData.translateZ) ){
             if( '3d' === finalTransformData.translateType ){
                 transform += `translate3d(${finalTransformData.translateX||0}, ${finalTransformData.translateY||0}, ${finalTransformData.translateZ||0})`;
@@ -327,12 +328,12 @@ function AtOnScrollY(elements) {
 
 function AtScrollProgressiveStyle(selector, options = {}) {
     let els = document.querySelectorAll(selector);
-    els = Array.from(els);
-    els.forEach((el,index) => {
-        AtAddScrollDownUpObserver(el, options, index);
-    });
 
     if (els.length > 0) {
+        els = Array.from(els);
+        els.forEach((el,index) => {
+            AtAddScrollDownUpObserver(el, options, index);
+        });
         window.addEventListener('scroll',() => AtOnScrollY(els),true);
     }
 }
