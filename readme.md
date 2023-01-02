@@ -69,6 +69,9 @@ A small vanilla JavaScript codes that applies CSS to elements while scrolling.
 View style-triggered-on-visible-scroll.html for Apply CSS on visible scroll and 
 progressive-style-on-scroll.html for Apply transform CSS on scroll progressively
 
+## Demo
+[View Demo](https://codersantosh.github.io/scroll-progressive-visible-animation/) or See index.html
+
 ## About Me
 <strong>WordPress Engineer</strong>
 <br />
