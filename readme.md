@@ -8,7 +8,7 @@ JavaScript scroll trigger style - apply CSS progressively on scroll or apply CSS
 A small vanilla JavaScript codes that applies CSS to elements while scrolling.
 
 ## Uses
-###1. Apply CSS on visible scroll
+### 1. Apply CSS on visible scroll
 
 <strong> HTML </strong>
 
@@ -28,7 +28,7 @@ A small vanilla JavaScript codes that applies CSS to elements while scrolling.
 </script>
 ```
 
-###2. Apply transform CSS on scroll progressively
+### 2. Apply transform CSS on scroll progressively
 
 <strong> HTML </strong>
 
